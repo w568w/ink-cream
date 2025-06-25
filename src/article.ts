@@ -1,0 +1,53 @@
+// Code highlighting
+import 'highlight.js/styles/github-dark-dimmed.min.css';
+const hasCodeBlocks = document.querySelectorAll("pre code").length > 0;
+if (hasCodeBlocks) {
+    import("highlight.js").then(hljs => {
+        hljs.default.highlightAll();
+    });
+}
+
+// Math rendering
+import 'katex/dist/katex.min.css';
+const hasMath = document.querySelectorAll(".math").length > 0;
+const macros = {};
+const cleanMarker = (contentWithMarkers: string): string => {
+    contentWithMarkers = contentWithMarkers.replace(/\\\(/g, '');
+    contentWithMarkers = contentWithMarkers.replace(/\\\)/g, '');
+    contentWithMarkers = contentWithMarkers.replace(/\\\[/g, '');
+    contentWithMarkers = contentWithMarkers.replace(/\\\]/g, '');
+    return contentWithMarkers;
+};
+if (hasMath) {
+    import("katex").then(katex => {
+        for (let element of document.getElementsByClassName("math")) {
+            if (element.textContent !== null) {
+                katex.render(cleanMarker(element.textContent), element as HTMLElement, {
+                    throwOnError: false,
+                    macros,
+                    displayMode: element.classList.contains("display"),
+                });
+            }
+        }
+    });
+}
+
+// Image lazy loading
+const images = document.querySelectorAll("img[data-src]");
+const config = {
+    rootMargin: "0px 0px 200px 0px",
+    threshold: 0
+};
+const observer = new IntersectionObserver((entries, self) => {
+    for (let entry of entries) {
+        if (entry.isIntersecting) {
+            const img = entry.target as HTMLImageElement;
+            img.src = img.dataset.src || "";
+            img.onload = () => img.removeAttribute("data-src");
+            self.unobserve(img);
+        }
+    }
+}, config);
+for (let img of images) {
+    observer.observe(img);
+}

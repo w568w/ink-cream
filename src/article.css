@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@utility cream-prose {
+    @apply prose prose-blue max-w-none dark:prose-invert;
+
+    code {
+        @apply bg-blue-50 text-blue-500 px-1 py-0.5 rounded-md overflow-hidden;
+
+        font-family: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+
+        &:before {
+            content: none;
+        }
+
+        &:after {
+            content: none;
+        }
+    }
+
+    blockquote {
+        @apply not-italic border-transparent relative;
+        font-weight: inherit;
+
+        &:before {
+            @apply content-[''] absolute -left-1 block transition bg-blue-50 h-full w-1 rounded-full;
+        }
+
+        /* Remove the double quotes from default styles */
+        p:before, p:after {
+            @apply content-none;
+        }
+
+    }
+}

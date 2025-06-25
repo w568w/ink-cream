@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+/* 自定义悬停效果：背景从中间放大 */
+@utility hover-scale-bg {
+    position: relative;
+    /* 为伪元素提供定位上下文 */
+    overflow: hidden;
+    /* 隐藏超出圆角的部分 */
+
+    &::before {
+        position: absolute;
+        content: "";
+        z-index: -1;
+        /* 将伪元素置于文本下方 */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--color-blue-100);
+        border-radius: 0.5rem;
+        transform-origin: center;
+        transform: scale(0);
+        transition: transform .15s cubic-bezier(0, 0, .2, 1);
+    }
+
+    &:hover::before {
+        transform: scale(1);
+    }
+
+    &>* {
+        position: relative;
+        z-index: 1;
+        /* 确保文本在伪元素之上 */
+    }
+}
+
+@utility cream-button {
+    @apply hover-scale-bg hover:text-blue-500 active:scale-95 rounded-lg transition-all;
+}

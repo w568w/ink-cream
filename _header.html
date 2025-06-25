@@ -1,0 +1,85 @@
+<!-- 导航栏 - 固定在顶部 -->
+<nav class="fixed top-0 left-0 right-0 z-30 md:px-4">
+    <div class="md:max-w-6xl mx-auto transition-transform">
+        <div class="bg-white rounded-b-xl p-3 px-4 flex items-center justify-between">
+
+            <!-- 左侧 Logo -->
+            <a href="/" class="flex items-center gap-2 font-semibold text-lg">
+                <!-- Home 图标 -->
+                {{if .Site.Logo}} <img src="{{.Site.Logo}}" alt="Logo" class="w-8 h-8 rounded-full">{{end}}
+                <span>{{.Site.Title}}</span>
+            </a>
+
+            <!-- 中间导航链接 -->
+            <div class="hidden md:flex items-center gap-2 font-semibold text-gray-700">
+                <a href="/" class="px-4 py-2 cream-button before:z-10"><span class="z-40">首页</span></a>
+                <a href="/archive.html" class="px-4 py-2 cream-button before:z-10"><span class="z-40">归档</span></a>
+                <a href="/tag.html" class="px-4 py-2 cream-button before:z-10"><span class="z-40">标签</span></a>
+                <!-- 根据当前页面类型决定如何获取作者信息 -->
+                {{if .Author}}
+                <!-- 文章页面：直接使用 .Author -->
+                <a href="/about.{{.Author.Id}}.html" class="px-4 py-2 cream-button before:z-10"><span class="z-40">关于</span></a>
+                {{else if .Articles}}
+                <!-- 首页/列表页面：从第一篇文章获取作者信息 -->
+                {{with $author := (index .Articles 0).Author}}
+                <a href="/about.{{$author.Id}}.html" class="px-4 py-2 cream-button before:z-10"><span class="z-40">关于</span></a>
+                {{end}}
+                {{end}}
+            </div>
+
+            <!-- 右侧区域 -->
+            <div class="flex items-center gap-3">
+                <!-- 搜索框 -->
+                <div class="relative hidden md:block">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <!-- 搜索图标 -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="text-gray-400">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="m21 21-4.3-4.3" />
+                        </svg>
+                    </div>
+                    <input type="text" placeholder="Search"
+                        class="bg-gray-100 rounded-lg py-2 pl-10 pr-4 w-40 focus:w-48 transition-all duration-200 outline-none focus:ring-2 focus:ring-blue-300">
+                </div>
+
+                <!-- 图标按钮 -->
+                <div class="flex items-center gap-2 text-gray-600">
+                    <button class="p-2 rounded-xl hover:bg-gray-200 transition-colors">
+                        <!-- 信息图标 -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="lucide lucide-info">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-4" />
+                            <path d="M12 8h.01" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- 移动端汉堡菜单 (仅在小屏幕显示) -->
+                <button class="p-2 md:hidden rounded-full hover:bg-gray-200 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" x2="20" y1="12" y2="12" />
+                        <line x1="4" x2="20" y1="6" y2="6" />
+                        <line x1="4" x2="20" y1="18" y2="18" />
+                    </svg>
+                </button>
+
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- 背景横幅区域 -->
+<div class="relative w-full h-96 md:h-[500px] bg-cover bg-center bg-no-repeat overflow-hidden"
+    style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');">
+
+    <!-- 版权信息 -->
+    <div
+        class="absolute bottom-32 right-4 md:right-[calc((100vw-72rem)/2+1rem)] text-white/70 text-xs bg-black/20 backdrop-blur-sm rounded-xl px-4 py-2">
+        © Unsplash / 2023
+    </div>
+</div>
