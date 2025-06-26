@@ -33,3 +33,25 @@ if (navbar !== null) {
         }
     });
 }
+
+// Hamburger menu toggle
+const hamburger = document.getElementById("mobile-menu-toggle");
+const menu = document.getElementById("mobile-menu");
+
+if (hamburger !== null && menu !== null) {
+    const dismissClasses = ["opacity-0", "invisible", "translate-y-2"];
+    hamburger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        for (const cls of dismissClasses) {
+            menu.classList.toggle(cls);
+        }
+    });
+    // 点击页面其他地方关闭菜单
+    document.addEventListener("click", () => {
+        menu.classList.add(...dismissClasses);
+    });
+    // 阻止点击菜单时关闭菜单
+    menu.addEventListener("click", (e) => {
+        e.stopPropagation();
+    });
+}

@@ -45,14 +45,38 @@
                 </div>
 
                 <!-- 移动端汉堡菜单 (仅在小屏幕显示) -->
-                <button class="p-2 md:hidden rounded-full hover:bg-gray-200 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="4" x2="20" y1="12" y2="12" />
-                        <line x1="4" x2="20" y1="6" y2="6" />
-                        <line x1="4" x2="20" y1="18" y2="18" />
-                    </svg>
-                </button>
+                <div class="relative md:hidden">
+                    <button id="mobile-menu-toggle" class="p-2 rounded-xl hover:bg-gray-200 cream-button transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" x2="20" y1="12" y2="12" />
+                            <line x1="4" x2="20" y1="6" y2="6" />
+                            <line x1="4" x2="20" y1="18" y2="18" />
+                        </svg>
+                    </button>
+
+                    <!-- 移动端下拉菜单 -->
+                    <div id="mobile-menu" class="absolute top-full right-0 mt-4 w-36 bg-white rounded-xl shadow-lg border border-gray-100 py-2 opacity-0 invisible transition-all duration-150 transform translate-y-2">
+                        <a href="/" class="flex items-center justify-between px-4 py-2 hover:bg-gray-50 transition-colors cream-button">
+                            <span class="text-gray-700 font-medium">首页</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500">
+                                <path d="m9 18 6-6-6-6"/>
+                            </svg>
+                        </a>
+                        <a href="/archive.html" class="flex items-center justify-between px-4 py-2 hover:bg-gray-50 transition-colors cream-button">
+                            <span class="text-gray-700 font-medium">归档</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500">
+                                <path d="m9 18 6-6-6-6"/>
+                            </svg>
+                        </a>
+                        <a href="/about.{{$author.Id}}.html" class="flex items-center justify-between px-4 py-2 hover:bg-gray-50 transition-colors cream-button">
+                            <span class="text-gray-700 font-medium">关于</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500">
+                                <path d="m9 18 6-6-6-6"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
 
             </div>
         </div>
