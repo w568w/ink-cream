@@ -15,7 +15,7 @@
     <!-- 内容区域 - 向上移动遮住横幅底部 -->
     <div class="relative z-20 md:max-w-6xl mx-auto -mt-32 pt-8">
         <div class="flex flex-col md:flex-row gap-8">
-            <main class="w-full md:w-2/3 lg:w-3/4 md:order-2">
+            <main class="w-full md:w-2/3 lg:w-3/4 md:order-2 space-y-4">
                 <!-- 归档卡片容器 -->
                 <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden p-8">
                     <!-- 时间线容器 -->
@@ -41,8 +41,8 @@
 
                         {{range $article := $yearData.Articles}}
                         <!-- 文章项容器 -->
-                        <div
-                            class="group relative flex items-start hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-200 py-3 px-2">
+                        <a href="/{{$article.Link}}" 
+                            class="group relative flex items-start hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-200 py-3 px-2 no-underline">
                             <!-- 时间线节点（动画：点变线） -->
                             <div
                                 class="relative z-50 flex-shrink-0 mr-6 ml-1.25 self-center w-2 h-8 flex justify-center">
@@ -59,28 +59,25 @@
                                 <!-- 标题 -->
                                 <h3
                                     class="font-semibold text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
-                                    <a href="/{{$article.Link}}">
-                                        {{$article.Title}} <span
-                                            class="text-sm text-gray-500 dark:text-gray-400 ml-2">{{$article.Date}}</span>
-                                    </a>
+                                    {{$article.Title}} <span
+                                        class="text-sm text-gray-500 dark:text-gray-400 ml-2">{{$article.Date}}</span>
                                 </h3>
                             </div>
-                        </div>
+                        </a>
                         {{end}}
                         {{end}}
                     </div>
                 </div>
-
-        </div>
-        </main>
-        <!-- 
+            </main>
+            <!-- 
               左侧栏: 个人信息卡片
               - 在 `md` 及以上断点，通过 `md:order-1` 将其排在左侧。
               - 在移动端，由于父容器是 `flex-col`，它会自然显示在主内容下方。
             -->
-        <aside class="w-full md:w-1/3 lg:w-1/4 md:order-1">
-            {{template "profile" .}}
-        </aside>
+            <aside class="w-full md:w-1/3 lg:w-1/4 md:order-1">
+                {{template "profile" .}}
+            </aside>
+        </div>
     </div>
     </div>
 
