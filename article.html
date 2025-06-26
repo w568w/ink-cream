@@ -28,6 +28,7 @@
                     <!-- 元信息 -->
                     <div
                         class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 dark:text-gray-400 mb-6">
+                        {{if gt .Date 0}}
                         <div class="flex items-center gap-1.5">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor" stroke-width="2">
@@ -36,6 +37,7 @@
                             </svg>
                             <span class="date-parser" data-timestamp="{{.Date}}" />
                         </div>
+                        {{end}}
                         <div class="flex items-center gap-1.5">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor" stroke-width="2">
@@ -45,6 +47,7 @@
                             <span>{{.Author.Name}}</span>
                         </div>
                         <!-- 标签 -->
+                        {{if gt (len .Tags) 0}}
                         <div class="flex items-center gap-1.5 flex-wrap">
                             <span class="font-semibold text-blue-500">#</span>
                             {{range .Tags}}
@@ -52,6 +55,7 @@
                                     class="z-40">{{.}}</span></a>
                             {{end}}
                         </div>
+                        {{end}}
                     </div>
                     <!-- 封面图片（如有） -->
                     {{if .Cover}}
