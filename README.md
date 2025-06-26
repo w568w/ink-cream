@@ -16,6 +16,12 @@
 
 ![Screenshot](readme_assets/1.png)
 
+- [ ] 适配移动端菜单栏
+- [ ] 支持评论区
+- [ ] 适配夜间模式
+- [x] 支持图片说明，调整图片样式
+
+
 ## 许可证
 
 Mozilla Public License 2.0

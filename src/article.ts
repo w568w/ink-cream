@@ -32,6 +32,20 @@ if (hasMath) {
     });
 }
 
+// Image captions
+const imagesWithCaptions = document.querySelectorAll(".cream-prose img[alt]:not([alt=''])");
+for (let img of imagesWithCaptions) {
+    const figureParent = document.createElement("figure");
+    const imgParent = img.parentElement;
+    if (imgParent && imgParent.tagName.toLowerCase() !== "figure") {
+        let oldImg = imgParent.replaceChild(figureParent, img) as HTMLImageElement;
+        const caption = document.createElement("figcaption");
+        caption.textContent = oldImg.alt;
+        figureParent.appendChild(oldImg);
+        figureParent.appendChild(caption);
+    }
+}
+
 // Image lazy loading
 const images = document.querySelectorAll("img[data-src]");
 const config = {

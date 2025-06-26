@@ -32,4 +32,14 @@
         }
 
     }
+
+    figure {
+        /* 如果图片较窄，居中 */
+        @apply mx-auto;
+        
+    }
+
+    figcaption {
+        @apply text-sm text-slate-500 dark:text-slate-400 text-center;
+    }
 }
