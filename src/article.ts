@@ -40,7 +40,7 @@ for (let img of imagesWithCaptions) {
     if (imgParent && imgParent.tagName.toLowerCase() !== "figure") {
         let oldImg = imgParent.replaceChild(figureParent, img) as HTMLImageElement;
         const caption = document.createElement("figcaption");
-        caption.textContent = oldImg.alt;
+        caption.innerHTML = oldImg.alt;
         figureParent.appendChild(oldImg);
         figureParent.appendChild(caption);
     }
