@@ -47,7 +47,7 @@ for (let img of imagesWithCaptions) {
 }
 
 // Image lazy loading
-const images = document.querySelectorAll("img[data-src]");
+const images = document.querySelectorAll(".cream-prose img[data-src]");
 const config = {
     rootMargin: "0px 0px 200px 0px",
     threshold: 0
