@@ -22,6 +22,9 @@
             <div class="hidden md:flex items-center gap-2 font-semibold text-gray-700">
                 <a href="/" class="px-4 py-2 cream-button before:z-10"><span class="z-40">首页</span></a>
                 <a href="/archive.html" class="px-4 py-2 cream-button before:z-10"><span class="z-40">归档</span></a>
+                {{if .Site.Config.CustomPage}}
+                <a href="/{{.Site.Config.CustomPage.Link}}.html" class="px-4 py-2 cream-button before:z-10"><span class="z-40">{{.Site.Config.CustomPage.Title}}</span></a>
+                {{end}}
                 <!-- 暂时不实现标签页面 -->
                 <!-- <a href="/tag.html" class="px-4 py-2 cream-button before:z-10"><span class="z-40">标签</span></a> -->
                 <a href="/about.{{$author.Id}}.html" class="px-4 py-2 cream-button before:z-10"><span class="z-40">关于</span></a>
@@ -57,6 +60,14 @@
                                 <use href="/icons.svg#small-right-arrow" />
                             </svg>
                         </a>
+                        {{if .Site.Config.CustomPage}}
+                        <a href="/{{.Site.Config.CustomPage.Link}}.html" class="flex items-center justify-between px-4 py-2 hover:bg-gray-50 transition-colors cream-button">
+                            <span class="text-gray-700 font-medium">{{.Site.Config.CustomPage.Title}}</span>
+                            <svg width="16" height="16" class="text-blue-500">
+                                <use href="/icons.svg#small-right-arrow" />
+                            </svg>
+                        </a>
+                        {{end}}
                         <a href="/archive.html" class="flex items-center justify-between px-4 py-2 hover:bg-gray-50 transition-colors cream-button">
                             <span class="text-gray-700 font-medium">归档</span>
                             <svg width="16" height="16" class="text-blue-500">
