@@ -3,6 +3,7 @@ copy:
     - assets
     - favicon.png
     - robots.txt
+    - icons.svg
 # I18n Support
 lang:
     archive:
