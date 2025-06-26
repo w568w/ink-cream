@@ -28,6 +28,7 @@ export default defineConfig({
         footer: resolve(__dirname, '_footer.html'),
         header: resolve(__dirname, '_header.html'),
         profile: resolve(__dirname, '_profile.html'),
+        comment: resolve(__dirname, '_comment.html'),
       },
     },
   },

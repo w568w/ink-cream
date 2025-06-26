@@ -65,3 +65,15 @@ const observer = new IntersectionObserver((entries, self) => {
 for (let img of images) {
     observer.observe(img);
 }
+
+// Comment section
+const hasComment = document.getElementById("vcomments") !== null;
+if (hasComment) {
+    import("valine").then(Valine => {
+        new Valine.default({
+            el: '#vcomments',
+            appId: import.meta.env.VITE_VALINE_APP_ID,
+            appKey: import.meta.env.VITE_VALINE_APP_KEY
+        })
+    });
+}
