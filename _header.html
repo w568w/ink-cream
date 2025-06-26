@@ -1,4 +1,12 @@
 <!-- 导航栏 - 固定在顶部 -->
+{{$author := ""}}
+{{if .Author}}
+    {{$author = .Author}}
+{{else if and .Articles (index .Articles 0).Author}}
+    {{$author = (index .Articles 0).Author}}
+{{else if and .Archive (index .Archive 0).Articles (index (index .Archive 0).Articles 0).Author}}
+    {{$author = (index (index .Archive 0).Articles 0).Author}}
+{{end}}
 <nav class="fixed top-0 left-0 right-0 z-30 md:px-4">
     <div id="navbar" class="md:max-w-6xl mx-auto transition-transform duration-200 ease-in-out">
         <div class="bg-white rounded-b-xl p-3 px-4 flex items-center justify-between">
@@ -15,16 +23,7 @@
                 <a href="/" class="px-4 py-2 cream-button before:z-10"><span class="z-40">首页</span></a>
                 <a href="/archive.html" class="px-4 py-2 cream-button before:z-10"><span class="z-40">归档</span></a>
                 <a href="/tag.html" class="px-4 py-2 cream-button before:z-10"><span class="z-40">标签</span></a>
-                <!-- 根据当前页面类型决定如何获取作者信息 -->
-                {{if .Author}}
-                <!-- 文章页面：直接使用 .Author -->
-                <a href="/about.{{.Author.Id}}.html" class="px-4 py-2 cream-button before:z-10"><span class="z-40">关于</span></a>
-                {{else if .Articles}}
-                <!-- 首页/列表页面：从第一篇文章获取作者信息 -->
-                {{with $author := (index .Articles 0).Author}}
                 <a href="/about.{{$author.Id}}.html" class="px-4 py-2 cream-button before:z-10"><span class="z-40">关于</span></a>
-                {{end}}
-                {{end}}
             </div>
 
             <!-- 右侧区域 -->
