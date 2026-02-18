@@ -3,7 +3,6 @@ for (const elem of document.getElementsByClassName("date-parser")) {
     const timestamp = elem.getAttribute("data-timestamp");
     if (timestamp) {
         const date = new Date(parseInt(timestamp) * 1000);
-        // Format the date to a human-readable format
         elem.textContent = date.toLocaleDateString();
     }
 }
@@ -13,7 +12,7 @@ const navbar = document.getElementById("navbar");
 if (navbar !== null) {
     let lastScrollTop = 0;
     const updateNavbar = () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollTop = window.scrollY;
         if (scrollTop > lastScrollTop) {
             navbar.style.transform = 'translateY(-100%)';
         } else {

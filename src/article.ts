@@ -11,12 +11,8 @@ if (hasCodeBlocks) {
 import 'katex/dist/katex.min.css';
 const hasMath = document.querySelectorAll(".math").length > 0;
 const macros = {};
-const cleanMarker = (contentWithMarkers: string): string => {
-    contentWithMarkers = contentWithMarkers.replace(/\\\(/g, '');
-    contentWithMarkers = contentWithMarkers.replace(/\\\)/g, '');
-    contentWithMarkers = contentWithMarkers.replace(/\\\[/g, '');
-    contentWithMarkers = contentWithMarkers.replace(/\\\]/g, '');
-    return contentWithMarkers;
+const cleanMarker = (content: string): string => {
+    return content.replace(/\\[()[\]]/g, '');
 };
 if (hasMath) {
     import("katex").then(katex => {
@@ -34,11 +30,11 @@ if (hasMath) {
 
 // Image captions
 const imagesWithCaptions = document.querySelectorAll(".cream-prose img[alt]:not([alt=''])");
-for (let img of imagesWithCaptions) {
+for (const img of imagesWithCaptions) {
     const figureParent = document.createElement("figure");
     const imgParent = img.parentElement;
     if (imgParent && imgParent.tagName.toLowerCase() !== "figure") {
-        let oldImg = imgParent.replaceChild(figureParent, img) as HTMLImageElement;
+        const oldImg = imgParent.replaceChild(figureParent, img) as HTMLImageElement;
         const caption = document.createElement("figcaption");
         caption.innerHTML = oldImg.alt;
         figureParent.appendChild(oldImg);
@@ -53,7 +49,7 @@ const config = {
     threshold: 0
 };
 const observer = new IntersectionObserver((entries, self) => {
-    for (let entry of entries) {
+    for (const entry of entries) {
         if (entry.isIntersecting) {
             const img = entry.target as HTMLImageElement;
             img.src = img.dataset.src || "";
@@ -62,7 +58,7 @@ const observer = new IntersectionObserver((entries, self) => {
         }
     }
 }, config);
-for (let img of images) {
+for (const img of images) {
     observer.observe(img);
 }
 
