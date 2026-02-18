@@ -1,11 +1,11 @@
-import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import { Buffer } from "node:buffer"
 import tailwindcss from '@tailwindcss/vite'
 import minifyHtml from "@minify-html/node"
+import type { Plugin } from 'vite'
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const __dirname = import.meta.dirname
 
 export default defineConfig({
   plugins: [
@@ -35,11 +35,7 @@ export default defineConfig({
   },
 })
 
-/**
- * @param {Parameters<typeof minifyHtml.minify>[1]} options - minify-html 的配置项
- * @returns {import('vite').Plugin}
- */
-function vitePluginMinifyHtml(options = {}) {
+function vitePluginMinifyHtml(options: Parameters<typeof minifyHtml.minify>[1] = {}): Plugin {
   return {
     name: "vite-plugin-minify-html-all",
 
