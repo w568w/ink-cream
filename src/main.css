@@ -37,3 +37,15 @@
 @utility cream-button {
     @apply hover-scale-bg hover:text-blue-500 active:scale-95 rounded-lg transition-all;
 }
+
+@utility cream-preview {
+    @apply text-gray-600 dark:text-slate-300 mt-3 text-base;
+
+    & * {
+        color: inherit;
+    }
+
+    & p {
+        margin: 0;
+    }
+}

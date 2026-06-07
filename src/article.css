@@ -45,3 +45,7 @@
         @apply text-sm text-slate-500 dark:text-slate-400 text-center;
     }
 }
+
+#vcomments .wl-count {
+    color: var(--waline-color);
+}
