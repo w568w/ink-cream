@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
+    "@waline/client": "^3.15.2",
     "highlight.js": "^11.11.1",
     "katex": "^0.17.0",
-    "tailwindcss": "^4.3.0",
-    "valine": "^1.5.3"
+    "tailwindcss": "^4.3.0"
   }
 }

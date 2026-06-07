@@ -63,13 +63,15 @@ for (const img of images) {
 }
 
 // Comment section
+import "@waline/client/waline.css";
 const hasComment = document.getElementById("vcomments") !== null;
 if (hasComment) {
-    import("valine").then(Valine => {
-        new Valine.default({
-            el: '#vcomments',
-            appId: import.meta.env.VITE_VALINE_APP_ID,
-            appKey: import.meta.env.VITE_VALINE_APP_KEY
-        })
+    import("@waline/client").then(({ init }) => {
+        init({
+            el: "#vcomments",
+            serverURL: import.meta.env.VITE_WALINE_SERVER_URL,
+            path: window.location.pathname,
+            dark: "auto",
+        });
     });
 }
