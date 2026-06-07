@@ -10,13 +10,13 @@ if (hasCodeBlocks) {
 // Math rendering
 import 'katex/dist/katex.min.css';
 const hasMath = document.querySelectorAll(".math").length > 0;
-const macros = {};
+const macros: Record<string, string> = {};
 const cleanMarker = (content: string): string => {
     return content.replace(/\\[()[\]]/g, '');
 };
 if (hasMath) {
     import("katex").then(katex => {
-        for (let element of document.getElementsByClassName("math")) {
+        for (const element of document.getElementsByClassName("math")) {
             if (element.textContent !== null) {
                 katex.render(cleanMarker(element.textContent), element as HTMLElement, {
                     throwOnError: false,
