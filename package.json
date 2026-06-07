@@ -12,13 +12,13 @@
     "@minify-html/node": "^0.18.1",
     "@tailwindcss/typography": "^0.5.19",
     "typescript": "~5.9.3",
-    "vite": "^7.3.1"
+    "vite": "^8.0.16"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.18",
+    "@tailwindcss/vite": "^4.3.0",
     "highlight.js": "^11.11.1",
     "katex": "^0.16.28",
-    "tailwindcss": "^4.1.18",
+    "tailwindcss": "^4.3.0",
     "valine": "^1.5.3"
   }
 }
